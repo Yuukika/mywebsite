@@ -1,0 +1,64 @@
+{% load article_tags %}
+<aside class="col-md-4">
+    <div class="widget widget-recent-posts">
+        <h3 class="widget-title">最新文章</h3>
+        {% latest_articles 5 %}
+        </ul>
+    </div>
+    <div class="widget widget-archives">
+        <h3 class="widget-title">归档</h3>
+        {% all_articles as articles %}
+        {% regroup articles by created.year as year_post_group %}
+        {% for year in year_post_group %}
+        <ul>
+            <li><a href="">{{ year.grouper }}年</a></li>
+            {% regroup year.list by created.month as month_post_group %}
+            {% for month in month_post_group %}
+            <ul>
+                <li>
+                    <a href="{% url 'article:date_archives' year.grouper month.grouper %}">
+                        {{ month.grouper }}月
+                        <span class="post-count">
+                            ({{ month.list | length }})
+                        </span>
+                    </a>
+                </li>
+            </ul>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+
+        {#{% date_archives %}#}
+    </div>
+
+    <div class="widget widget-category">
+        <h3 class="widget-title">分类</h3>
+        {% all_category as categories %}
+        <ul>
+        {% for category in categories %}
+            <li>
+                <a href="{% url 'article:category_archives' category.name %}">{{ category.name }} <span class="post-count">({{ category.count }})</span></a>
+            </li>
+        {% empty %}
+        <p>没有文章</p>
+        {% endfor %}
+        </ul>
+    </div>
+
+    <div class="widget widget-tag-cloud">
+        <h3 class="widget-title">标签云</h3>
+        {% all_tags as tags %}
+        <ul>
+        {% for tag in tags %}
+            <li>
+                <a href="{% url 'article:tag_archives' tag.name %}">{{ tag }}<span class="post-count">({{ tag.count }})</span></a>
+            </li>
+        {% empty %}
+        <p>暂时没有标签</p>
+        {% endfor %}
+        </ul>
+    </div>
+    <div class="rss">
+        <a href="{% url 'rss' %}"><span class="ion-social-rss-outline"></span> RSS 订阅</a>
+    </div>
+</aside>

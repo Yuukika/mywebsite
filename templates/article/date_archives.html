@@ -1,0 +1,9 @@
+{% for date in date_archives %}
+    <ul>
+        <li>
+            <a href="{% url 'article:date_archives' date.year date.month %}">{{ date.year }} 年 {{ date.month }} 月 {{ date.day }} 日</a>
+        </li>
+    </ul>
+{% empty%}
+<p>还没有文章</p>
+{% endfor %}
