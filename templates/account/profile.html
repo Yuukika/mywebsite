@@ -1,4 +1,4 @@
-{% extends 'account/nav.html'%}
+{% extends 'account/nav.html' %}
 {% load staticfiles %}
 {% block card %}
             <div class="card mt-3">
@@ -14,6 +14,9 @@
                                     <div class="form-group">
                                         <label for="{{ form.location.id_for_label }}">Location</label>
                                         <input type="text" maxlength="50" name="location" placeholder="{{ profile.location }}" class="form-username form-control" id="id_location" value="{{ profile.location }}">
+                                    </div>
+                                    <div class="form-group">
+                                        {{ form.captcha }}
                                     </div>
                                 <button class="btn btn-primary btn-sm" type="submit">更新资料</button>
                             </form>

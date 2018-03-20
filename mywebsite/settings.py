@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'article',
     'account',
     'comment',
+    'captcha',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,13 @@ REDIS_DB = 0
 
 LOGIN_REDIRECT_URL = '/article/home/'
 
+
+
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_HOST_USER = 'milanov@163.com'
+EMAIL_HOST_PASSWORD = 'luwenbin258965'
+EMAIL_PORT = 25
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'milanov@163.com'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

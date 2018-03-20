@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load article_tags %}
 {% load staticfiles %}
-{% block content %}
+{% block main %}
 <div class="container">
     <div class="row">
         <div class="col-md-3">
@@ -12,7 +12,7 @@
                     </a>
                 </li>
                 <li class="list-group-item ">
-                    <a href="#">
+                    <a href="{% url 'account:password_change' %}">
                         <i class="fa fa-key mr-2" aria-hidden="true"
                         ></i>修改密码
                     </a>

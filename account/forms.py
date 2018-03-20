@@ -1,10 +1,12 @@
 from django import forms
 from django.contrib.auth.models import User
 from .models import Profile
+from captcha.fields import CaptchaField
 
 class LoginForm(forms.Form):
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
+    captcha = CaptchaField(error_messages={'invalid': '验证码错误啊'})
 
 
 class RegisterForm(forms.ModelForm):
@@ -23,6 +25,7 @@ class RegisterForm(forms.ModelForm):
 
 
 class ProfileForm(forms.ModelForm):
+    captcha =CaptchaField()
     class Meta:
         model = Profile
         fields = ('bio','location',)
