@@ -46,6 +46,8 @@
             <button type="button" class="overlay-close"><span class="ion-ios-close-empty"></span></button>
             <nav>
                 <ul>
+                    <li class="cl-effect-11"><a href="{% url 'question:anquan' %}" >安全</a></li>
+                    <li class="cl-effect-11"><a href="{% url 'question:xianchang' %}">现场</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="contact.html" >发帖</a></li>
                     <li><a href="{% url 'account:user_profile' %}">设置</a></li>

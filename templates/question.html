@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block main %}
+    <main class="col-md-12">
+        {% for timu in ti %}
+        <article class="post post-1">
+            <header class="entry-header">
+            </header>
+            <div class="entry-content clearfix">
+                <p>{{ timu.id }} {{ timu.question }}</p>
+            </div>
+            <div class="entry-content clearfix">
+                <p>答:{{ timu.answer }}</p>
+            </div>
+        </article>
+        <hr>
+        {% endfor %}
+    </main>
+{% endblock %}

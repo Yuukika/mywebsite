@@ -27,4 +27,5 @@ urlpatterns = [
     url(r'^comment/',include("comment.urls",namespace="comment", app_name="comment")),
     url(r'^all/rss/$', AllArticlesRssFeed(), name="rss"),
     url(r'^captcha/', include('captcha.urls')),
+    url(r'^question/', include('question.urls',namespace='question', app_name='question')),
     ]
