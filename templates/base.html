@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="{% static 'css/custom.css' %}">
         <link rel="stylesheet" href="{% static 'css/font-awesome/css/font-awesome.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/simditor.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/APlayer.css' %}" />
 
         <!-- js -->
         <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -28,6 +29,7 @@
         <script type="text/javascript" src="{% static 'js/hotkeys.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/uploader.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/simditor.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/APlayer.js' %}"></script>
     </head>
     <body>
         {% include "header.html" %}
@@ -46,8 +48,9 @@
             <button type="button" class="overlay-close"><span class="ion-ios-close-empty"></span></button>
             <nav>
                 <ul>
-                    <li class="cl-effect-11"><a href="{% url 'question:anquan' %}" >安全</a></li>
-                    <li class="cl-effect-11"><a href="{% url 'question:xianchang' %}">现场</a></li>
+                    <!--li class="cl-effect-11"><a href="{% url 'question:anquan' %}" >安全</a></li>
+                    <li class="cl-effect-11"><a href="{% url 'question:xianchang' %}">现场</a></li-->
+                    <li class="cl-effect-11"><a href="{% url 'music' %}">音乐</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="contact.html" >发帖</a></li>
                     <li><a href="{% url 'account:user_profile' %}">设置</a></li>
@@ -59,7 +62,8 @@
                 </ul>
             </nav>
         </div>
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=0 height=0 src="//music.163.com/outchain/player?type=2&id=22764863&auto=1&height=66"></iframe>
+        <!--embed src="//music.163.com/style/swf/widget.swf?sid=22764863&type=2&auto=1&width=320&height=66" width="340" height="86"  allowNetworking="all"></embed-->
+        <!--iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=0 height=0 src="//music.163.com/outchain/player?type=2&id=22764863&auto=1&height=66"></iframe-->
     </body>
     <script src="{% static 'js/script.js' %}"></script>
 </html>

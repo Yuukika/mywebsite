@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from article import views
 from article.feeds import AllArticlesRssFeed
+from music.views import get_songs
 
 urlpatterns = [
     url(r'^$',views.home,name="home"),
@@ -28,4 +29,5 @@ urlpatterns = [
     url(r'^all/rss/$', AllArticlesRssFeed(), name="rss"),
     url(r'^captcha/', include('captcha.urls')),
     url(r'^question/', include('question.urls',namespace='question', app_name='question')),
+    url(r'^music/$', get_songs,name='music'),
     ]
