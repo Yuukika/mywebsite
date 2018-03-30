@@ -3,24 +3,13 @@
 {% block main %}
     <main class="col-md-12">
         <div class="aplayer" id="aplayer"></div>
-        <div class="search bar6">
-            <form action ='.' method='post'>
-                {% csrf_token %}
-                <input placeholder="输入歌曲名称" name="music_name" type="text">
-                <button type="submit"></button>
-            </form>
+        <div class="bar6">
+                <input placeholder="输入歌曲名称" name="music_name" type="text" id="music_name">
+                <input type="button" id='search' value='搜索' onclick="search_song()"></input>
         </div>
-        {% for song in search_song_list %}
-        <article class="post post-1">
-            <header class="entry-header">
-            </header>
-            <div class="entry-content clearfix">
-                <p><a onclick="play_song({{ song.song_id }})" href="#" >{{ song.name }}       {{ song.artist }}</a></p>
-                <img src="{{ song.cover }}" alt="" style="width:90px; height:90px;">
-            </div>
-        </article>
-        <hr>
-        {% endfor %}
+        <div class="container" id="parent">
+
+        </div>
     </main>
 {% endblock %}
 
@@ -54,5 +43,18 @@
             autoplay:true,
             audio: song_list
         });
+        function search_song(){
+            $.get("{% url 'music:search_song' %}",{
+                'music_name': $('#music_name').val()
+            },function(data, textStatus){
+                var song_list = eval(data)
+                console.log(song_list)
+                var $parent = $("#parent").empty()
+                for(var i=0;i<song_list.length;i++){
+                    var html = "<article class='post post-1'><header class='entry-header'></header><div class='entry-content clearfix'><p><a onclick='play_song(" +song_list[i].song_id+ ")' href='#' >"+ song_list[i].name+"     "+ song_list[i].artist+"</a></p><img src='" + song_list[i].cover+ "' alt='' style='width:90px; height:90px;'></div></article><hr>";
+                    $("#parent").append(html);
+                }
+            });
+        };
         </script>
 {% endblock %}

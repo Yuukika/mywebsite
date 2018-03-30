@@ -25,6 +25,15 @@ def get_songs(request):
     else:
         return render(request,'music.html',{'songs':song_list_json})
 
+def search_song(request):
+    music_name = request.GET.get('music_name')
+    print(request.GET.get('music_name'))
+    crawler = Crawler()
+    crawler.search_song(music_name)
+    search_song_list = crawler.songs
+    return HttpResponse(json.dumps(search_song_list))
+
+
 def play_song(request):
     song_id = request.GET.get('song_id')
     song = Song.objects.get(song_id = song_id)

@@ -102,7 +102,6 @@ class Crawler():
         """
 
         result = self.search(song_name, search_type=1, limit=limit)
-        print('balabala')
         if result['result']['songCount'] <= 0:
             click.echo('Song {} not existed.'.format(song_name))
         else:
