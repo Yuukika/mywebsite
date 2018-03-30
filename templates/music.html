@@ -3,16 +3,52 @@
 {% block main %}
     <main class="col-md-12">
         <div class="aplayer" id="aplayer"></div>
+        <div class="search bar6">
+            <form action ='.' method='post'>
+                {% csrf_token %}
+                <input placeholder="输入歌曲名称" name="music_name" type="text">
+                <button type="submit"></button>
+            </form>
+        </div>
+        {% for song in search_song_list %}
+        <article class="post post-1">
+            <header class="entry-header">
+            </header>
+            <div class="entry-content clearfix">
+                <p><a onclick="play_song({{ song.song_id }})" href="#" >{{ song.name }}       {{ song.artist }}</a></p>
+                <img src="{{ song.cover }}" alt="" style="width:90px; height:90px;">
+            </div>
+        </article>
+        <hr>
+        {% endfor %}
     </main>
 {% endblock %}
 
 {% block  javascript %}
     <script>
-        var songs = {{ songs|safe }};
+        function play_song(song_id){
+            $.get("{% url 'music:play' %}",{'song_id': song_id},function(data,textStatus){
+                var songs = eval(data);
+                var song_list = new Array()
+                console.log(songs);
+                for(var i=0;i<songs.length;i++){
+                    song_list.push(songs[i].fields)
+                    }
+                song_list.reverse();
+                new APlayer({
+                    container: document.getElementById('aplayer'),
+                    autoplay:true,
+                    audio: song_list
+                });
+            }
+            );
+        };
+        var songs = {{ songs | safe }};
         var song_list = new Array()
+        console.log(songs);
         for(var i=0;i<songs.length;i++){
             song_list.push(songs[i].fields)
-        }
+            };
         new APlayer({
             container: document.getElementById('aplayer'),
             autoplay:true,
