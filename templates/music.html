@@ -3,9 +3,11 @@
 {% block main %}
     <main class="col-md-12">
         <div class="aplayer" id="aplayer"></div>
-        <div class="bar6">
-                <input placeholder="输入歌曲名称" name="music_name" type="text" id="music_name">
-                <input type="button" id='search' value='搜索' onclick="search_song()"></input>
+        <div class="col-md-12 col-xs-12">
+            <div class="input-group">
+                <input placeholder="请输入歌曲名称" class="form-control" type='text' id="music_name" name="music_name"></input>
+                <span class="input-group-addon" id ='search' onclick="search_song()"><i class="glyphicon glyphicon-search"></i></span>
+            </div>
         </div>
         <div class="container" id="parent">
 
