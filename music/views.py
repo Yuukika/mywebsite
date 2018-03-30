@@ -31,6 +31,9 @@ def search_song(request):
     crawler = Crawler()
     crawler.search_song(music_name)
     search_song_list = crawler.songs
+    for song in search_song_list:
+        if not Song.objects.filter(song_id =song['song_id']).exists():
+            Song.objects.create(name=song['name'],artist=song['artist'],url=song['url'], cover=song['cover'],song_id=song['song_id'])
     return HttpResponse(json.dumps(search_song_list))
 
 
