@@ -11,7 +11,6 @@ body {
 strong { font-weight: 500; }
 
 a, a:hover, a:focus {
-	color: #de995e;
 	text-decoration: none;
     -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
 }
@@ -75,7 +74,7 @@ img { max-width: 100%; }
     color: #fff;
     -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
 }
-.btn-link-2:hover, .btn-link-2:focus, 
+.btn-link-2:hover, .btn-link-2:focus,
 .btn-link-2:active, .btn-link-2:active:focus { outline: 0; opacity: 0.6; background: rgba(0, 0, 0, 0.3); color: #fff; }
 
 
@@ -100,7 +99,7 @@ img { max-width: 100%; }
 .top-content .description a {
 	color: #fff;
 }
-.top-content .description a:hover, 
+.top-content .description a:hover,
 .top-content .description a:focus { border-bottom: 1px dotted #fff; }
 
 .form-box {
@@ -172,13 +171,13 @@ img { max-width: 100%; }
 @media (min-width: 768px) and (max-width: 991px) {}
 
 @media (max-width: 767px) {
-	
+
 	.inner-bg { padding: 60px 0 110px 0; }
 
 }
 
 @media (max-width: 415px) {
-	
+
 	h1, h2 { font-size: 32px; }
 
 }

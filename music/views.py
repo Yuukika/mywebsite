@@ -7,7 +7,7 @@ from .netease import Encrypyed,Crawler
 from django.views.decorators.csrf import csrf_exempt
 
 def get_songs(request):
-    songs =Song_like.objects.all()
+    #songs =Song_like.objects.all()
     #Play_list.objects.all().delete()
     song_list_json = serializers.serialize("json", songs)
     if request.method == 'POST':
