@@ -6,6 +6,12 @@ from django.core import serializers
 from django.http import HttpResponse
 from .netease import Encrypyed,Crawler
 from django.views.decorators.csrf import csrf_exempt
+import logging
+logging.basicConfig(level=logging.WARNING,
+                    filename='./log/log.txt',
+                    filemode='w',
+                    format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s')
+
 
 def get_songs(request):
     songs =Song_like.objects.all()
@@ -27,16 +33,18 @@ def get_songs(request):
         return render(request,'music.html',{'songs':song_list_json})
 
 def search_song(request):
-    music_name = request.GET.get('music_name')
-    print(request.GET.get('music_name'))
-    crawler = Crawler()
-    crawler.search_song(music_name)
-    search_song_list = crawler.songs
-    for song in search_song_list:
-        if not Song.objects.filter(song_id =song['song_id']).exists():
-            Song.objects.create(name=song['name'],artist=song['artist'],url=song['url'], cover=song['cover'],song_id=song['song_id'])
-    return HttpResponse(json.dumps(search_song_list))
-
+    try:
+        music_name = request.GET.get('music_name')
+        print(request.GET.get('music_name'))
+        crawler = Crawler()
+        crawler.search_song(music_name)
+        search_song_list = crawler.songs
+        for song in search_song_list:
+            if not Song.objects.filter(song_id =song['song_id']).exists():
+                Song.objects.create(name=song['name'],artist=song['artist'],url=song['url'], cover=song['cover'],song_id=song['song_id'])
+        return HttpResponse(json.dumps(search_song_list))
+    except Exception as e:
+        logging.error(e)
 
 def play_song(request):
     song_id = request.GET.get('song_id')
