@@ -34,7 +34,7 @@ def get_songs(request):
 
 def search_song(request):
     try:
-        music_name = request.GET.get('music_name')
+        music_name = request.GET.get('music_name').decode('utf8')
         print(request.GET.get('music_name'))
         crawler = Crawler()
         crawler.search_song(music_name)
