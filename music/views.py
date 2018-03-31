@@ -8,7 +8,7 @@ from .netease import Encrypyed,Crawler
 from django.views.decorators.csrf import csrf_exempt
 import logging
 logging.basicConfig(level=logging.WARNING,
-                    filename='./log/log.txt',
+                    filename='./log.txt',
                     filemode='w',
                     format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s')
 
