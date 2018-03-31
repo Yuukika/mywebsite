@@ -15,7 +15,7 @@ logging.basicConfig(level=logging.WARNING,
 
 def get_songs(request):
     songs =Song_like.objects.all()
-    #Play_list.objects.all().delete()
+    Play_list.objects.all().delete()
     song_list_json = serializers.serialize("json", songs)
     if request.method == 'POST':
         music_name = request.POST['music_name']
