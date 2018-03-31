@@ -18,7 +18,11 @@
 {% block  javascript %}
     <script>
         function play_song(song_id){
-            $.get("{% url 'music:play' %}",{'song_id': song_id},function(data,textStatus){
+            $.ajax({url:"{% url 'music:play' %}",
+                data:{'song_id': song_id},
+                type:'GET',
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                success: function(data,textStatus){
                 var songs = eval(data);
                 var song_list = new Array()
                 console.log(songs);
@@ -32,7 +36,7 @@
                     audio: song_list
                 });
             }
-            );
+            });
         };
         var songs = {{ songs | safe }};
         var song_list = new Array()
