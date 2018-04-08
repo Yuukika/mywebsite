@@ -18,7 +18,6 @@
         <link rel="stylesheet" href="{% static 'css/font-awesome/css/font-awesome.min.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/simditor.css' %}" />
         <link rel="stylesheet" type="text/css" href="{% static 'css/APlayer.css' %}" />
-        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
 
         <!-- js -->
         <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -47,50 +46,39 @@
         </style>
     </head>
     <body>
-        <div id="top-image">
-            <div id="content" class="container center-block">
-                {% include "header.html" %}
-                <div class="content-body">
-                    <div class="container">
-                        <div class="row">
-                            {% block main %}{% endblock %}
-                            {% block aside %}{% endblock %}
-                        </div>
-                    </div>
-                </div>
-                {% include "footer.html" %}
-                {% block  javascript %}
-                {% endblock %}
-                <div class="overlay overlay-hugeinc">
-                    <button type="button" class="overlay-close"><span class="ion-ios-close-empty"></span></button>
-                    <nav>
-                        <ul>
-                            <!--li class="cl-effect-11"><a href="{% url 'question:anquan' %}" >安全</a></li>
-                            <li class="cl-effect-11"><a href="{% url 'question:xianchang' %}">现场</a></li-->
-                            <li class="cl-effect-11"><a href="{% url 'music:music_page' %}">音乐</a></li>
-                            {% if user.is_authenticated %}
-                            <li><a href="contact.html" >发帖</a></li>
-                            <li><a href="{% url 'account:user_profile' %}">设置</a></li>
-                            <li><a href="{% url 'account:user_logout' %}" >注销</a></li>
-                            {% else %}
-                            <li><a href="{% url 'account:user_login' %}" >登录</a></li>
-                            <li><a href="{% url 'account:user_register' %}" >注册</a></li>
-                            {% endif %}
-                        </ul>
-                    </nav>
+        {% include "header.html" %}
+        <div class="content-body">
+            <div class="container">
+                <div class="row">
+                    {% block main %}{% endblock %}
+                    {% block aside %}{% endblock %}
                 </div>
             </div>
+        </div>
+        {% include "footer.html" %}
+        {% block  javascript %}
+        {% endblock %}
+        <div class="overlay overlay-hugeinc">
+            <button type="button" class="overlay-close"><span class="ion-ios-close-empty"></span></button>
+            <nav>
+                <ul>
+                    <!--li class="cl-effect-11"><a href="{% url 'question:anquan' %}" >安全</a></li>
+                    <li class="cl-effect-11"><a href="{% url 'question:xianchang' %}">现场</a></li-->
+                    <li class="cl-effect-11"><a href="{% url 'music:music_page' %}">音乐</a></li>
+                    {% if user.is_authenticated %}
+                    <li class="cl-effect-11"><a href="contact.html" >发帖</a></li>
+                    <li class="cl-effect-11"><a href="{% url 'account:user_profile' %}">设置</a></li>
+                    <li class="cl-effect-11"><a href="{% url 'account:user_logout' %}" >注销</a></li>
+                    {% else %}
+                    <li class="cl-effect-11"><a href="{% url 'account:user_login' %}" >登录</a></li>
+                    <li class='cl-effect-11'><a href="{% url 'account:user_register' %}" >注册</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
         </div>
         <!--embed src="//music.163.com/style/swf/widget.swf?sid=22764863&type=2&auto=1&width=320&height=66" width="340" height="86"  allowNetworking="all"></embed-->
         <!--iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=0 height=0 src="//music.163.com/outchain/player?type=2&id=22764863&auto=1&height=66"></iframe-->
         <script src="{% static 'js/script.js' %}"></script>
-        <script src="{% static 'js/ios-parallax.js' %}"></script>
-        <script type="text/javascript">
-            $(document).ready(function() {
-              $('#top-image').iosParallax({
-                movementFactor: 50
-              });
-            });
-        </script>
+
     </body>
 </html>

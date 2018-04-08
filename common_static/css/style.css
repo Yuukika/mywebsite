@@ -26,7 +26,7 @@ h1, h2 {
 h3 {
 	font-size: 22px;
     font-weight: 300;
-    color: #FFF;
+    color: #000;
     line-height: 30px;
 }
 
@@ -222,4 +222,46 @@ img { max-width: 100%; }
     font-size:16px;
     color:black;
 }
+.form-control {
+    z-index:0;
+    background-color: transparent;
+}
+.list-group-item {
+    background-color: transparent;
+    border:2px solid #FFF;
+
+}
+.form-group input {
+    background-color: transparent;
+    color:#FFF;
+    width:80%;
+    display: inline-block;
+    height:45px;
+    border:2px solid #FFF;
+}
+.form-group label {
+    color:#FFF;
+    width:73px;
+}
+.btn-my {
+    float:left;
+    background-color: transparent;
+    border:2px solid #FFF;
+}
+.input-group-addon {
+    background-color: transparent;
+    font-size:18px;
+    color:#000;
+}
+.search-song {
+    background-color: transparent;
+    height:50px;
+}
+.search-song input {
+    height:100%;
+    font-size:18px;
+}
+.song_list {
+}
+
 
